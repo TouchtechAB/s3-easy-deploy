@@ -7,6 +7,7 @@ const Fs = require('fs');
 const Glob = require('glob');
 const Mime = require('mime');
 const Path = require('path');
+const readline = require('readline');
 require('colors');
 
 let config, s3, cloudfront;
@@ -161,7 +162,7 @@ function uploadFiles(files) {
 }
 
 function printProgress(action, file) {
-  process.stdout.clearLine();
+  readline.cursorTo(process.stdout, 0);
   process.stdout.write('\r' +
     status.uploaded + ' uploaded / ' +
     status.skipped + ' skipped / ' +
